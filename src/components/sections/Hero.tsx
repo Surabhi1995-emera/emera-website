@@ -74,9 +74,9 @@ export default function Hero() {
             data-hero-item
             className="mt-8 max-w-md text-ivory/75 text-sm md:text-base font-light leading-relaxed"
           >
-            A rare expression of serenity in the heart of Chennai — only
-            twelve residences, inspired by the enduring charm of 19th-century
-            Parisian architecture.
+            Twelve residences set quietly apart in the heart of Chennai,
+            shaped by the enduring grace of 19th-century Parisian
+            architecture.
           </p>
 
           <div data-hero-item className="mt-10 flex items-center gap-6">

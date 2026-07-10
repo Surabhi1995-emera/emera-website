@@ -21,30 +21,30 @@ export default function Philosophy() {
 
             <FadeIn delay={0.2}>
               <p className="mt-10 text-charcoal/70 leading-relaxed text-base md:text-lg font-light max-w-xl">
-                A breeze moves through green canopies, the soft call of
-                birds, light drifting across open space. The city recedes
-                into the background, and a sense of calm lingers. Welcome to
-                Émera by SPR City — a rare expression of serenity in the
-                heart of Chennai.
+                Here, the city fades to birdsong and filtered light, and the
+                quiet movement of air through the trees. Émera by SPR City
+                was conceived as a pocket of stillness at the centre of
+                Chennai — an escape that never feels far from home.
               </p>
             </FadeIn>
 
             <FadeIn delay={0.3}>
               <p className="mt-6 text-charcoal/70 leading-relaxed text-base md:text-lg font-light max-w-xl">
-                Inspired by the enduring charm of 19th-century Parisian
-                architecture, here light, landscape, and proportion come
-                together in quiet harmony.
+                Its proportions draw from 19th-century Paris — an
+                architectural language built on light, symmetry, and
+                generous open space, reinterpreted here for a quieter way of
+                living.
               </p>
             </FadeIn>
 
             <FadeIn delay={0.4} className="mt-12 border-t border-charcoal/10 pt-8 max-w-xl">
               <p className="font-serif italic text-xl md:text-2xl text-emerald leading-relaxed text-balance">
-                &ldquo;The name Émera is derived from the emerald — long
-                prized for its depth, rarity, and enduring value.&rdquo;
+                &ldquo;Émera takes its name from the emerald — valued less
+                for its brilliance than for its depth and permanence.&rdquo;
               </p>
               <p className="mt-4 text-sm text-charcoal/50 font-light leading-relaxed">
-                Its rich green character reflects the spirit of the residence
-                itself: lush, composed, and quietly exceptional.
+                That same sense of restraint and richness carries through
+                every corner of the residence.
               </p>
             </FadeIn>
           </div>

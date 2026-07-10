@@ -25,11 +25,10 @@ export default function Architecture() {
           </RevealText>
           <FadeIn delay={0.2}>
             <p className="mt-8 text-charcoal/70 leading-relaxed text-base md:text-lg font-light">
-              At Émera, architecture is more than an aesthetic — it is an
-              expression of timelessness. Drawing from the iconic
-              Haussmannian style of Paris, Émera is shaped by proportion,
-              detail, and a sense of grandeur, crafted for those who
-              appreciate classic beauty.
+              Every line at Émera answers to proportion rather than trend.
+              The Haussmannian vocabulary of 19th-century Paris — considered
+              facades, deliberate symmetry, restrained ornament — gives the
+              building a presence that doesn&rsquo;t chase attention.
             </p>
           </FadeIn>
         </div>

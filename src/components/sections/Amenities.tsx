@@ -1,10 +1,11 @@
+import { clsx } from "clsx";
 import Container from "@/components/ui/Container";
 import Eyebrow from "@/components/ui/Eyebrow";
 import RevealText from "@/components/ui/RevealText";
 import FadeIn from "@/components/ui/FadeIn";
 import FadeImage from "@/components/ui/FadeImage";
 
-type Item = { label: string; src?: string; alt?: string };
+type Item = { label: string; src: string; alt: string };
 
 type Category = {
   title: string;
@@ -34,16 +35,14 @@ const CATEGORIES: Category[] = [
       { label: "Stilt Level Parking", src: "/images/parking-corridor.jpg", alt: "Stilt level parking corridor" },
       { label: "Valet & Concierge Services", src: "/images/valet-key-handoff.jpg", alt: "Valet and concierge service" },
       { label: "24×7 Security", src: "/images/security-control-room.jpg", alt: "24 by 7 security control room" },
-      { label: "Building Management System" },
       { label: "Home Automation", src: "/images/home-automation-panel.jpg", alt: "Home automation control panel detail" },
-      { label: "100% Power Backup" },
     ],
   },
 ];
 
 export default function Amenities() {
   return (
-    <section id="amenities" className="bg-warm-white py-28 md:py-40">
+    <section id="amenities" className="bg-warm-white py-24 md:py-32">
       <Container className="max-w-2xl">
         <Eyebrow>Amenities</Eyebrow>
         <RevealText
@@ -54,38 +53,37 @@ export default function Amenities() {
         </RevealText>
         <FadeIn delay={0.2}>
           <p className="mt-8 text-charcoal/70 leading-relaxed text-base md:text-lg font-light">
-            At Émera, every shared space has been thoughtfully curated to
-            bring together wellness, leisure, and quiet community.
+            Every shared space at Émera is considered an extension of
+            home — set aside for wellness, connection, and calm.
           </p>
         </FadeIn>
       </Container>
 
-      <div className="mt-16 md:mt-20 flex flex-col gap-16 md:gap-20">
+      <div className="mt-14 md:mt-16 flex flex-col gap-12 md:gap-14">
         {CATEGORIES.map((cat) => (
           <Container key={cat.title}>
             <FadeIn>
-              <p className="text-[11px] tracking-luxe uppercase text-gold border-b border-charcoal/10 pb-4">
+              <p className="text-[11px] tracking-luxe uppercase text-gold font-semibold border-b border-charcoal/10 pb-4">
                 {cat.title}
               </p>
             </FadeIn>
 
-            <div className="mt-8 grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
+            <div
+              className={clsx(
+                "mt-6 grid grid-cols-2 gap-4 md:gap-6",
+                cat.items.length === 4 ? "md:grid-cols-4" : "md:grid-cols-3"
+              )}
+            >
               {cat.items.map((item) => (
-                <div key={item.label}>
-                  {item.src ? (
-                    <FadeImage
-                      src={item.src}
-                      alt={item.alt ?? item.label}
-                      className="aspect-square"
-                      parallax={false}
-                      sizes="(min-width: 768px) 33vw, 50vw"
-                    />
-                  ) : (
-                    <div className="aspect-square bg-stone-light/50 flex items-center justify-center">
-                      <span className="h-8 w-px bg-gold/50" />
-                    </div>
-                  )}
-                  <p className="mt-3 text-[11px] tracking-luxe uppercase text-charcoal/60 leading-relaxed">
+                <div key={item.label} className="flex flex-col items-center text-center">
+                  <FadeImage
+                    src={item.src}
+                    alt={item.alt}
+                    className="aspect-square w-2/3"
+                    parallax={false}
+                    sizes="(min-width: 768px) 22vw, 33vw"
+                  />
+                  <p className="mt-3 text-[11px] tracking-luxe uppercase text-charcoal/70 font-semibold leading-relaxed">
                     {item.label}
                   </p>
                 </div>
