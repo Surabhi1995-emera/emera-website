@@ -1,0 +1,99 @@
+@import "tailwindcss";
+
+@theme {
+  /* Palette — extracted from the Émera by SPR brochure */
+  --color-ivory: #f6f1e7;
+  --color-warmwhite: #faf7f1;
+  --color-parchment: #efe7d8;
+  --color-stone: #c9bfa9;
+  --color-stone-dark: #9c917c;
+  --color-charcoal: #2a2823;
+  --color-charcoal-light: #3d3a33;
+  --color-soft-black: #100f0d;
+  --color-black-warm: #17140f;
+  --color-emerald: #1e3a2f;
+  --color-emerald-light: #2f4f3e;
+  --color-emerald-dark: #0f231b;
+  --color-gold: #b4915b;
+  --color-gold-light: #d4b483;
+  --color-gold-dark: #8c6b3e;
+
+  --font-serif: var(--font-cormorant), "Cormorant Garamond", serif;
+  --font-sans: var(--font-inter), "Inter", sans-serif;
+
+  --ease-luxe: cubic-bezier(0.16, 1, 0.3, 1);
+
+  --animate-fade-up: fade-up 1.2s var(--ease-luxe) forwards;
+
+  @keyframes fade-up {
+    from {
+      opacity: 0;
+      transform: translateY(28px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+html {
+  scroll-behavior: auto;
+}
+
+body {
+  background: var(--color-warmwhite);
+  color: var(--color-charcoal);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background: var(--color-emerald);
+  color: var(--color-ivory);
+}
+
+/* Thin, elegant scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-warmwhite);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-stone);
+  border: 2px solid var(--color-warmwhite);
+  border-radius: 999px;
+}
+
+.text-balance {
+  text-wrap: balance;
+}
+
+/* Utility: eyebrow / label style small caps */
+.eyebrow {
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+/* Hairline divider */
+.hairline {
+  height: 1px;
+  background: currentColor;
+  opacity: 0.25;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
