@@ -32,8 +32,8 @@ export default function Footer() {
               <a href="#philosophy" className="hover:text-ivory transition-colors">
                 Philosophy
               </a>
-              <a href="#residences" className="hover:text-ivory transition-colors">
-                Residences
+              <a href="#architecture" className="hover:text-ivory transition-colors">
+                Architecture
               </a>
               <a href="#amenities" className="hover:text-ivory transition-colors">
                 Amenities
