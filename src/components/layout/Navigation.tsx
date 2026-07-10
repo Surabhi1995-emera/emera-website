@@ -9,10 +9,7 @@ import Container from "@/components/ui/Container";
 const LINKS = [
   { label: "Philosophy", href: "#philosophy" },
   { label: "Architecture", href: "#architecture" },
-  { label: "Residences", href: "#residences" },
   { label: "Amenities", href: "#amenities" },
-  { label: "Location", href: "#location" },
-  { label: "Gallery", href: "#gallery" },
   { label: "Contact", href: "#contact" },
 ];
 

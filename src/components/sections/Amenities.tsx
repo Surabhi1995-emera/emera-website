@@ -3,60 +3,40 @@ import Eyebrow from "@/components/ui/Eyebrow";
 import RevealText from "@/components/ui/RevealText";
 import FadeIn from "@/components/ui/FadeIn";
 import FadeImage from "@/components/ui/FadeImage";
-import { clsx } from "clsx";
 
-type Act = {
-  eyebrow: string;
+type Item = { label: string; src?: string; alt?: string };
+
+type Category = {
   title: string;
-  copy: string;
-  hero: { src: string; alt: string };
-  supporting: { src: string; alt: string; label: string }[];
-  reverse?: boolean;
+  items: Item[];
 };
 
-const ACTS: Act[] = [
+const CATEGORIES: Category[] = [
   {
-    eyebrow: "Wellness",
-    title: "A place to slow down.",
-    copy: "An infinity pool that meets the skyline, a fully equipped gym, and a mindfulness zone set apart from the everyday — every shared space designed as an extension of the home.",
-    hero: {
-      src: "/images/infinity-pool-night-skyline.jpg",
-      alt: "Infinity pool overlooking the Chennai skyline at night",
-    },
-    supporting: [
-      { src: "/images/gym.jpg", alt: "Fully equipped gym", label: "Fully Equipped Gym" },
-      {
-        src: "/images/outdoor-lounge-cabana.jpg",
-        alt: "Mindfulness zone lounge seating",
-        label: "Mindfulness Zone",
-      },
+    title: "Wellness",
+    items: [
+      { label: "Infinity Pool", src: "/images/infinity-pool-night-skyline.jpg", alt: "Infinity pool overlooking the Chennai skyline at night" },
+      { label: "Fully Equipped Gym", src: "/images/gym.jpg", alt: "Fully equipped gym" },
+      { label: "Mindfulness Zone", src: "/images/outdoor-lounge-cabana.jpg", alt: "Mindfulness zone lounge seating" },
     ],
   },
   {
-    eyebrow: "Social",
-    title: "Curated for togetherness.",
-    copy: "A clubhouse with banquet space, an indoor games room, and landscaped terraces that bring together wellness, leisure, and quiet community.",
-    hero: {
-      src: "/images/banquet-hall-gold-dome.jpg",
-      alt: "Clubhouse banquet hall with gold domed ceiling",
-    },
-    supporting: [
-      { src: "/images/billiards-room.jpg", alt: "Indoor games room with billiards table", label: "Indoor Games Room" },
-      { src: "/images/rooftop-pool-sunset.jpg", alt: "Landscaped rooftop terrace at sunset", label: "Landscaped Terrace" },
+    title: "Social",
+    items: [
+      { label: "Clubhouse with Banquet Space", src: "/images/banquet-hall-gold-dome.jpg", alt: "Clubhouse banquet hall with gold domed ceiling" },
+      { label: "Indoor Games Room", src: "/images/billiards-room.jpg", alt: "Indoor games room with billiards table" },
+      { label: "Landscaped Terrace", src: "/images/terrace-sunset-lounge.jpg", alt: "Landscaped terrace lounge at sunset" },
     ],
-    reverse: true,
   },
   {
-    eyebrow: "Convenience & Security",
-    title: "Ease, quietly assured.",
-    copy: "Stilt level parking, valet and concierge services, 24×7 security, and provision for home automation — every detail considered, so nothing needs to be.",
-    hero: {
-      src: "/images/parking-corridor.jpg",
-      alt: "Stilt level parking corridor",
-    },
-    supporting: [
-      { src: "/images/valet-key-handoff.jpg", alt: "Valet and concierge service", label: "Valet & Concierge" },
-      { src: "/images/security-control-room.jpg", alt: "24 by 7 security control room", label: "24×7 Security" },
+    title: "Convenience & Security",
+    items: [
+      { label: "Stilt Level Parking", src: "/images/parking-corridor.jpg", alt: "Stilt level parking corridor" },
+      { label: "Valet & Concierge Services", src: "/images/valet-key-handoff.jpg", alt: "Valet and concierge service" },
+      { label: "24×7 Security", src: "/images/security-control-room.jpg", alt: "24 by 7 security control room" },
+      { label: "Building Management System" },
+      { label: "Home Automation", src: "/images/home-automation-panel.jpg", alt: "Home automation control panel detail" },
+      { label: "100% Power Backup" },
     ],
   },
 ];
@@ -80,51 +60,38 @@ export default function Amenities() {
         </FadeIn>
       </Container>
 
-      <div className="mt-24 md:mt-32 flex flex-col gap-28 md:gap-40">
-        {ACTS.map((act) => (
-          <div key={act.eyebrow}>
-            <Container
-              className={clsx(
-                "grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-6 items-center",
-                act.reverse && "lg:[direction:rtl]"
-              )}
-            >
-              <FadeImage
-                src={act.hero.src}
-                alt={act.hero.alt}
-                className="lg:col-span-8 aspect-[16/10]"
-                sizes="(min-width: 1024px) 66vw, 100vw"
-              />
-              <div className="lg:col-span-4 lg:[direction:ltr]">
-                <p className="text-[11px] tracking-luxe uppercase text-gold">
-                  {act.eyebrow}
-                </p>
-                <p className="mt-4 font-serif text-3xl md:text-4xl text-charcoal text-balance">
-                  {act.title}
-                </p>
-                <p className="mt-5 text-charcoal/60 font-light leading-relaxed">
-                  {act.copy}
-                </p>
-              </div>
-            </Container>
+      <div className="mt-16 md:mt-20 flex flex-col gap-16 md:gap-20">
+        {CATEGORIES.map((cat) => (
+          <Container key={cat.title}>
+            <FadeIn>
+              <p className="text-[11px] tracking-luxe uppercase text-gold border-b border-charcoal/10 pb-4">
+                {cat.title}
+              </p>
+            </FadeIn>
 
-            <Container className="mt-4 md:mt-6 grid grid-cols-2 gap-4 md:gap-6">
-              {act.supporting.map((s) => (
-                <div key={s.label}>
-                  <FadeImage
-                    src={s.src}
-                    alt={s.alt}
-                    className="aspect-[4/3]"
-                    parallax={false}
-                    sizes="50vw"
-                  />
-                  <p className="mt-4 text-[11px] tracking-luxe uppercase text-charcoal/50">
-                    {s.label}
+            <div className="mt-8 grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
+              {cat.items.map((item) => (
+                <div key={item.label}>
+                  {item.src ? (
+                    <FadeImage
+                      src={item.src}
+                      alt={item.alt ?? item.label}
+                      className="aspect-square"
+                      parallax={false}
+                      sizes="(min-width: 768px) 33vw, 50vw"
+                    />
+                  ) : (
+                    <div className="aspect-square bg-stone-light/50 flex items-center justify-center">
+                      <span className="h-8 w-px bg-gold/50" />
+                    </div>
+                  )}
+                  <p className="mt-3 text-[11px] tracking-luxe uppercase text-charcoal/60 leading-relaxed">
+                    {item.label}
                   </p>
                 </div>
               ))}
-            </Container>
-          </div>
+            </div>
+          </Container>
         ))}
       </div>
     </section>

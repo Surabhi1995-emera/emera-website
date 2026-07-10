@@ -1,14 +1,16 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import gsap from "gsap";
+import { AnimatePresence, motion } from "framer-motion";
 import Container from "@/components/ui/Container";
 import Button from "@/components/ui/Button";
 
 export default function Hero() {
   const imgRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
+  const [pinOpen, setPinOpen] = useState(false);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -93,6 +95,50 @@ export default function Hero() {
         <span className="h-10 w-px bg-ivory/40 overflow-hidden">
           <span className="block h-full w-full bg-ivory animate-[scrollcue_2.2s_ease-in-out_infinite]" />
         </span>
+      </div>
+
+      <div
+        data-hero-item
+        className="absolute bottom-8 right-6 md:right-12 z-10 flex flex-col items-end gap-3"
+      >
+        <AnimatePresence>
+          {pinOpen && (
+            <motion.div
+              initial={{ opacity: 0, y: 8, scale: 0.96 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: 8, scale: 0.96 }}
+              transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+              className="bg-soft-black/60 backdrop-blur-sm px-4 py-3 text-right"
+            >
+              <p className="text-[10px] tracking-luxe uppercase text-gold-light">
+                Location
+              </p>
+              <p className="mt-1 text-sm text-ivory font-light">
+                Nelson Manickam Road, Chennai
+              </p>
+            </motion.div>
+          )}
+        </AnimatePresence>
+
+        <button
+          type="button"
+          onClick={() => setPinOpen((o) => !o)}
+          aria-label="Show location"
+          aria-expanded={pinOpen}
+          className="flex items-center gap-2 text-ivory/80 hover:text-ivory transition-colors duration-300"
+        >
+          <span className="text-[11px] tracking-luxe uppercase hidden md:inline">
+            Nelson Manickam Road
+          </span>
+          <span className="relative flex h-3 w-3">
+            <span
+              className={`absolute inline-flex h-full w-full rounded-full bg-gold-light/60 ${
+                pinOpen ? "animate-ping" : ""
+              }`}
+            />
+            <span className="relative inline-flex h-3 w-3 rounded-full bg-gold-light ring-4 ring-gold-light/25" />
+          </span>
+        </button>
       </div>
 
       <style>{`
